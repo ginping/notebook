@@ -216,9 +216,9 @@ def main():
     #         urls.append(urindex)
     #         print('正在采集品类索引url：' + urindex)
     # print('\n', f'品类索引url采集完成！  一共有{len(urls)}条品类索引url！ \n')
-    with open('URLS/厦门美食urls.txt', 'r') as f:
+    with open('URLS/北京美食urls.txt', 'r') as f:
         urls = f.readlines()
-    with open(r'C:\Users\Ph\Desktop\AntAgent_Data\大众点评\厦门美食2.csv', 'w', newline='', encoding='utf-8-sig') as csvfile:
+    with open(r'C:\Users\Ph\Desktop\AntAgent_Data\大众点评\北京美食2.csv', 'w', newline='', encoding='utf-8-sig') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(['店名', '地址', '城市', '评分', '类别', '联系方式', '定位', '评级', '评论数', '人均价格', '口味', '环境', '服务'])
         check = []
@@ -247,7 +247,7 @@ def main():
                     continue
                 for uri in uris:
                     print(f'开始爬取详情页：{uri}')
-                pool = Pool(4)
+                pool = Pool(4)    # 使用多进程提速，数字填入自己电脑cpu核数
                 htmls = pool.map(get_detail_html, uris)
                 # datas = pool.map(parse_detail, htmls)
                 pool.close()
@@ -266,17 +266,6 @@ def main():
                         # time.sleep(4 + float(random.randint(1, 600))/100)
 
 
-def test():
-    url_test = 'http://www.dianping.com/shop/93914508'
-    print(url_test)
-    response = requests.get(url_test, headers=headers)
-    print(response.status_code)
-    html = response.text
-    print(html)
-    # data = parse_detail(html)
-    # print(data)
-
-
 if __name__ == '__main__':
     start = time.time()
     main()
@@ -287,5 +276,3 @@ if __name__ == '__main__':
     minu = (spend - 3600 * hour) // 60
     sec = spend - 3600 * hour - 60 * minu
     print(f'一共花费了{hour}小时{minu}分钟{sec}秒')
-
-    # test()
