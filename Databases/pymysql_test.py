@@ -13,7 +13,7 @@ class MysqlSearch(object):
 				host='localhost',
 				port=3306,
 				user='root',
-				passwd='142857',
+				passwd='',
 				db='news',
 				charset='utf8')
 		except Exception as e:
