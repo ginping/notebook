@@ -37,7 +37,11 @@ def randomname():
 
 
 def randomvalue():
-	return randint(0, 9)
+	r = randint(1, 36)
+	if r < 26:
+		return chr(randint(65,90))
+	else:
+		return randint(0, 9)
 
 
 
