@@ -38,7 +38,7 @@ def draw_love(x, y):
 	love.left(120)
 	draw_arc(love)
 	love.forward(22)
-	love.write("HXX", font=("Arial", 8, "normal"), align="center")
+	love.write("LZZ", font=("Arial", 10, "normal"), align="center")
 	love.left(140)
 	love.end_fill()
 
